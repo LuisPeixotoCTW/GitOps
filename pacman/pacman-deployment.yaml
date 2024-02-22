@@ -1,0 +1,13 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: pacman
+  namespace: pacman 
+spec:
+  template:
+    spec:
+      containers:
+      - name: pacman
+        resources:
+          requests:
+            cpu: "1m"
