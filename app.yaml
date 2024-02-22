@@ -1,0 +1,149 @@
+apiVersion: argoproj.io/v1alpha1
+kind: Application
+metadata:
+  creationTimestamp: "2024-02-22T13:42:37Z"
+  generation: 37
+  name: pacman
+  namespace: argocd
+  resourceVersion: "44352"
+  uid: 2b4e9a45-08e2-46ad-a470-84abf2bec514
+spec:
+  destination:
+    namespace: pacman-argo
+    server: https://kubernetes.default.svc
+  project: default
+  source:
+    path: pacman/
+    repoURL: https://github.com/LuisPeixotoCTW/GitOps
+    targetRevision: HEAD
+  syncPolicy:
+    syncOptions:
+    - CreateNamespace=true
+status:
+  conditions:
+  - lastTransitionTime: "2024-02-22T13:42:39Z"
+    message: Resource apps/Deployment/pacman/pacman appeared 2 times among application
+      resources.
+    type: RepeatedResourceWarning
+  controllerNamespace: argocd
+  health:
+    status: Healthy
+  history:
+  - deployStartedAt: "2024-02-22T13:42:51Z"
+    deployedAt: "2024-02-22T13:42:54Z"
+    id: 0
+    revision: 9a931852d7f77b68cc460522eb8ba369065eece7
+    source:
+      path: pacman/
+      repoURL: https://github.com/LuisPeixotoCTW/GitOps
+      targetRevision: HEAD
+  - deployStartedAt: "2024-02-22T13:44:26Z"
+    deployedAt: "2024-02-22T13:44:27Z"
+    id: 1
+    revision: bda27f1bbeb4f45293fbab99ead2514ba44f0915
+    source:
+      path: pacman/
+      repoURL: https://github.com/LuisPeixotoCTW/GitOps
+      targetRevision: HEAD
+  - deployStartedAt: "2024-02-22T13:46:16Z"
+    deployedAt: "2024-02-22T13:46:17Z"
+    id: 2
+    revision: bda27f1bbeb4f45293fbab99ead2514ba44f0915
+    source:
+      path: pacman/
+      repoURL: https://github.com/LuisPeixotoCTW/GitOps
+      targetRevision: HEAD
+  operationState:
+    finishedAt: "2024-02-22T13:46:17Z"
+    message: successfully synced (all tasks run)
+    operation:
+      initiatedBy:
+        username: admin
+      retry: {}
+      sync:
+        prune: true
+        revision: bda27f1bbeb4f45293fbab99ead2514ba44f0915
+        syncOptions:
+        - CreateNamespace=true
+        syncStrategy:
+          hook: {}
+    phase: Succeeded
+    startedAt: "2024-02-22T13:46:16Z"
+    syncResult:
+      resources:
+      - group: apps
+        hookPhase: Running
+        kind: Deployment
+        message: deployment.apps/pacman unchanged
+        name: pacman
+        namespace: pacman
+        status: Synced
+        syncPhase: Sync
+        version: v1
+      - group: autoscaling
+        hookPhase: Running
+        kind: HorizontalPodAutoscaler
+        message: horizontalpodautoscaler.autoscaling/pacman unchanged
+        name: pacman
+        namespace: pacman
+        status: Synced
+        syncPhase: Sync
+        version: v2
+      - group: networking.k8s.io
+        hookPhase: Running
+        kind: Ingress
+        message: ingress.networking.k8s.io/pacman unchanged
+        name: pacman
+        namespace: pacman
+        status: Synced
+        syncPhase: Sync
+        version: v1
+      revision: bda27f1bbeb4f45293fbab99ead2514ba44f0915
+      source:
+        path: pacman/
+        repoURL: https://github.com/LuisPeixotoCTW/GitOps
+        targetRevision: HEAD
+  reconciledAt: "2024-02-22T14:11:36Z"
+  resources:
+  - group: apps
+    health:
+      status: Healthy
+    kind: Deployment
+    name: pacman
+    namespace: pacman
+    status: Synced
+    version: v1
+  - group: autoscaling
+    health:
+      message: recommended size matches current size
+      status: Healthy
+    kind: HorizontalPodAutoscaler
+    name: pacman
+    namespace: pacman
+    status: Synced
+    version: v2
+  - group: networking.k8s.io
+    health:
+      status: Healthy
+    kind: Ingress
+    name: pacman
+    namespace: pacman
+    status: Synced
+    version: v1
+  sourceType: Directory
+  summary:
+    externalURLs:
+    - http://pacman.local/
+    images:
+    - ghcr.io/luispeixotoctw/pacman:2.0
+  sync:
+    comparedTo:
+      destination:
+        namespace: pacman-argo
+        server: https://kubernetes.default.svc
+      source:
+        path: pacman/
+        repoURL: https://github.com/LuisPeixotoCTW/GitOps
+        targetRevision: HEAD
+    revision: bda27f1bbeb4f45293fbab99ead2514ba44f0915
+    status: Synced

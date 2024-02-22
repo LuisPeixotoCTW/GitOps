@@ -2,12 +2,23 @@ apiVersion: apps/v1
 kind: Deployment
 metadata:
   name: pacman
-  namespace: pacman-argo 
+  labels:
+    app: pacman
 spec:
+  selector:
+    matchLabels:
+      app: pacman
   template:
+    metadata:
+      labels:
+        app: pacman
     spec:
       containers:
       - name: pacman
+        image: ghcr.io/arblctw/pacman:2.0
+        ports:
+        - containerPort: 80
         resources:
           requests:
+            memory: "64Mi"
             cpu: "1m"
