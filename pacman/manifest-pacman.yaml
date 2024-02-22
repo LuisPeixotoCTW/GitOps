@@ -10,7 +10,7 @@ metadata:
   labels:
     app: pacman
   name: pacman
-  namespace: pacman
+  namespace: pacman-argo
   resourceVersion: "33363"
   uid: c8696e4f-352a-4e2e-81bf-3f4dabec0ce4
 spec:

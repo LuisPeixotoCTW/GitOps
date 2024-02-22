@@ -2,7 +2,7 @@ apiVersion: apps/v1
 kind: Deployment
 metadata:
   name: pacman
-  namespace: pacman 
+  namespace: pacman-argo 
 spec:
   template:
     spec:
